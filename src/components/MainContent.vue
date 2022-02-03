@@ -1,17 +1,16 @@
 <template>
     <div class="container">
-       <div class="card"></div>
-       <div class="card"></div>
-       <div class="card"></div>
-       <div class="card"></div>
-       <div class="card"></div>
-       <div class="card"></div>
+       <div v-for="movie in movies" :key="movie.id" class="card">
+           <img :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`" alt="">
+       </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+    props:{
+        movies:Object,
+    }
 }
 </script>
 
@@ -27,6 +26,10 @@ export default {
         height: 300px;
         background-color: gray;
         border: 2px solid white;
+        img{
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 </style>
