@@ -1,22 +1,44 @@
 <template>
   <div id="app">
-    <header-box></header-box>
+    <header-box @search='movieSearch'></header-box>
     <main-content></main-content>
   </div>
 </template>
 
 <script>
+// importo axios
+import axios from "axios";
 // importo headerbox
-import HeaderBox from './components/HeaderBox.vue'
+import HeaderBox from "./components/HeaderBox.vue";
 // importo maincontent
-import MainContent from './components/MainContent.vue'
+import MainContent from "./components/MainContent.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     HeaderBox,
-    MainContent
-  }
-}
+    MainContent,
+  },
+  data() {
+    return {
+      // creo un array vuoto di film
+      movies: [],
+    };
+  },
+  methods: {
+    // qui effettuerò chiamata axios di theMovieDatabase Movie/search Api
+    // uso il template literal su get e do alla query un valore inputkeyword
+    // che quando chiamerò il metodo con search avrà il valore della keyword presente nella sezione Headerbox/input
+    movieSearch(inputKeyword) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?api_key=4de8e24617b012aa2d57ca4c9f87b4d5&language=en-US&query=${inputKeyword}&page=1&include_adult=false`
+        )
+        .then((response) => {
+          this.movies=response.data.results
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
