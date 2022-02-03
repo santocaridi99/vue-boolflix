@@ -10,6 +10,15 @@
            <div class="textArea">
                <p><strong>Titolo:</strong> <span>{{movie.title}}</span></p>
                <p><strong>Titolo originale:</strong> <span>{{movie.original_title}}</span></p>
+               <p>
+                   <strong>Lingua:</strong>
+                   <span>{{movie.original_language}}
+                       <!-- se nell'array di lingue è inclusa quella ricevuta dall'api allora mostra la bandiera -->
+                       <img v-if="originalLanguage.includes(movie.original_language)" :src="`/flags/${movie.original_language}.png`" :alt="movie.original_language">
+                       <!-- altrimenti mostra un placeholder -->
+                       <img v-else src="https://via.placeholder.com/12" alt="dummy">
+                   </span>
+                </p>
                <p><strong>Voto: </strong><span>{{movie.popularity}}</span></p>
                <p><strong>Overview: </strong><span>{{movie.overview}}</span></p>
            </div>
@@ -19,6 +28,12 @@
 
 <script>
 export default {
+    data(){
+        return{
+            // array di lingue presenti
+            originalLanguage:['de','en','es','fr','it']
+        }
+    },
     props:{
         // movies è un Array
         movies:Array,
@@ -62,6 +77,12 @@ export default {
             overflow-y: auto;
             p{
                 margin-top: 4px;
+                span{
+                    img{
+                        width: 12px;
+                        height: 12px;
+                    }
+                }
             }
         }
     }
