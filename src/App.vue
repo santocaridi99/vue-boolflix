@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <!-- search nella sezione Headerbox input chiamerà metodo movieSearch -->
     <header-box @search='movieSearch'></header-box>
+    <!-- movies nel maincontent corrisponde all'array movies in app -->
     <main-content :movies="movies"></main-content>
   </div>
 </template>
@@ -28,6 +30,7 @@ export default {
     // qui effettuerò chiamata axios di theMovieDatabase Movie/search Api
     // uso il template literal su get e do alla query un valore inputkeyword
     // che quando chiamerò il metodo con search avrà il valore della keyword presente nella sezione Headerbox/input
+    // array movies corrisponderà al response data dell'api
     movieSearch(inputKeyword) {
       axios
         .get(
