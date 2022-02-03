@@ -59,6 +59,7 @@ export default {
             background-color: gray;
             font-size: 12px;
             padding: 5px;
+            overflow-y: auto;
             p{
                 margin-top: 4px;
             }
