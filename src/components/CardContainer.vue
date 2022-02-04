@@ -3,38 +3,38 @@
     <!-- all'img do con il template literal parte del link preso dal file condiviso + il valore relativo all'immagine -->
     <!-- ad alt do il titolo del film -->
     <img
-      :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
-      :alt="movie.title"
+      :src="`https://image.tmdb.org/t/p/original${card.poster_path}`"
+      :alt="card.title"
     />
     <!-- la text area sarà visibile solo in  hover -->
     <!-- avrà i vari valori dell'oggetto movie -->
     <div class="textArea">
       <p>
-        <strong>Titolo:</strong> <span>{{ movie.title }}</span>
+        <strong>Titolo:</strong> <span>{{ card.title }}</span>
       </p>
       <p>
         <strong>Titolo originale:</strong>
-        <span>{{ movie.original_title }}</span>
+        <span>{{ card.original_title }}</span>
       </p>
       <p>
         <strong>Lingua:</strong>
         <span
-          >{{ movie.original_language }}
+          >{{ card.original_language }}
           <!-- se nell'array di lingue è inclusa quella ricevuta dall'api allora mostra la bandiera -->
           <img
-            v-if="originalLanguage.includes(movie.original_language)"
-            :src="`/flags/${movie.original_language}.png`"
-            :alt="movie.original_language"
+            v-if="originalLanguage.includes(card.original_language)"
+            :src="`/flags/${card.original_language}.png`"
+            :alt="card.original_language"
           />
           <!-- altrimenti mostra un placeholder -->
           <img v-else src="https://via.placeholder.com/12" alt="dummy" />
         </span>
       </p>
       <p>
-        <strong>Voto: </strong><span>{{ movie.popularity }}</span>
+        <strong>Voto: </strong><span>{{ card.popularity }}</span>
       </p>
       <p>
-        <strong>Overview: </strong><span>{{ movie.overview }}</span>
+        <strong>Overview: </strong><span>{{ card.overview }}</span>
       </p>
     </div>
   </div>
@@ -42,8 +42,8 @@
 <script>
 export default {
   props: {
-    //   movie sarà un oggetto
-    movie: Object,
+    //   card sarà un oggetto
+    card: Object,
   },
   data() {
     return {

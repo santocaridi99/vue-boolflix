@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <!-- nel container avrò che per ogni oggetto  movie presente in  movies , con chiave l'id avrò una card -->
-    <!-- movie nel card container corrisponde al movie oggetti in movies (domani cambierò nomi) -->
-    <card-container v-for="movie in movies" :key="movie.id" :movie="movie">
+    <!-- card nel card container corrisponde al movie oggetti in movies -->
+    <card-container v-for="movie in movies" :key="movie.id" :card="movie">
     </card-container>
   </div>
 </template>
