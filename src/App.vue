@@ -73,5 +73,9 @@ export default {
 </script>
 
 <style lang="scss">
+// import main scss
 @import "./style/main.scss";
+// import fontawesome
+// importo font awesome
+@import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
 </style>

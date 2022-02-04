@@ -31,7 +31,14 @@
         </span>
       </p>
       <p>
-        <strong>Voto: </strong><span>{{ card.vote_average }}</span>
+        <strong>Voto: </strong>
+        <!-- avrò una stellina per ogni voto che è decimale da 1 a 10 che dividendo per due diventerà ( un numero da 1 a 5) -->
+        <!-- uso mathround per calcolare per eccesso o difetto -->
+        <i
+          v-for="i in Math.round(card.vote_average / 2)"
+          :key="i"
+          class="fas fa-star"
+        ></i>
       </p>
       <p>
         <strong>Overview: </strong><span>{{ card.overview }}</span>
@@ -45,7 +52,7 @@ export default {
     //   card sarà un oggetto
     card: Object,
     // passo anche title come stringa
-    title:String
+    title: String,
   },
   data() {
     return {
@@ -56,43 +63,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.card {
-  width: calc(100% / 4 - 10px);
-  margin: 10px;
-  height: 350px;
-  background-color: gray;
-  border: 2px solid white;
-  position: relative;
-  // hover di card in text area che lo trasformerà da display none in display block
-  &:hover .textArea {
-    display: block;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-  }
-  .textArea {
-    color: white;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    display: none;
-    background-color: gray;
-    font-size: 12px;
-    padding: 5px;
-    overflow-y: auto;
-    p {
-      margin-top: 4px;
-      span {
-        img {
-          width: 12px;
-          height: 12px;
-        }
-      }
-    }
-  }
-}
+@import "../style/cardstyle.scss";
 </style>
