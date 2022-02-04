@@ -34,8 +34,7 @@ export default {
   methods: {
     // step(2)
     // funzione searchContent o cerca di contenuti. accetta in ingresso la inputKeyword
-    // che corrisponde alla keyword inserita nell'input in Headerbox
-    // la funzione verrà usata nella  search o ricerca
+    // che corrisponde alla keyword inserita nell'input in Headerbox.
     // questa funzione popola i due array (serie e film)
     // chiamando gli api con ingresso i relativi tipi e la keyword
     // si popoleranno aspettando "await" la chiamata api
@@ -46,13 +45,14 @@ export default {
     },
     // primo step(1) creo chiamata api
     // avrà type = il tipo (film o serie tv) che inseriremo nell url del get della chiamata
+    // genere che sarà search ricerca o popular
     // e inputKeyword che corrispondera alla keyword data dall'input nell header box
     // dichiaro una variabile params "parametri" a cui assegno come query dell'api la keyword
     // come api_key assegno valore salvato nei data
     // e facoltativamente  il linguaggio in italiano .in questo caso 'it'
     // la chiamata api con axios  la consegnamo ad una variabile result
     // prima di eseguire il return (inizialmente è un esecuzione sincrona )
-    // aspetta con await ,una volta eseguita la chiamata ritorna result 
+    // aspetta con await ,una volta eseguita la chiamata ritorna result
     // la chiamata api ,dopo ave inserito l'await dovrà essere preceduta con "async"
     // passo allo step(2)
     async movieDbApi(type, inputKeyword) {
@@ -68,6 +68,19 @@ export default {
         });
       return result;
     },
+    // creo un metodo senza keyword che chiamerà l'api delle serie tv e film più popolari
+    noKeywordApi(){
+      axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${this.api_key}&language=it&page=1`).then((res)=>{
+        this.series=res.data.results;
+      })
+       axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.api_key}&language=it&page=1`).then((res)=>{
+        this.movies=res.data.results;
+      })
+    }
+  },
+  // verranno caricati prima
+  mounted() {
+    this.noKeywordApi()
   },
 };
 </script>
@@ -77,5 +90,5 @@ export default {
 @import "./style/main.scss";
 // import fontawesome
 // importo font awesome
-@import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
+@import url("https://use.fontawesome.com/releases/v5.7.1/css/all.css");
 </style>
