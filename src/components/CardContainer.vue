@@ -55,8 +55,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .card {
-  width: calc(100% / 4 - 60px);
-  margin: 60px;
+  width: calc(100% / 4 - 10px);
+  margin: 10px;
   height: 350px;
   background-color: gray;
   border: 2px solid white;
