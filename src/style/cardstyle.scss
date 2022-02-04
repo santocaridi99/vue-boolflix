@@ -1,10 +1,9 @@
 // stile della card
 .card {
-    width: 340px;
-    margin: 10px;
+    min-width: 340px;
     height: 500px;
+    margin: 2px;
     background-color: gray;
-    border: 2px solid white;
     position: relative;
     // hover di card in text area che lo trasformerà da display none in display block
     &:hover .textArea {

@@ -54,9 +54,8 @@ export default {
   .container {
     width: 1200px;
     margin-bottom: 50px;
-    overflow-x: auto;
+    overflow-x: scroll;
     display: flex;
-    flex-wrap: wrap;
   }
   h1 {
     padding-left: 60px;
