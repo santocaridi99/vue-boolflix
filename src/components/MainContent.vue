@@ -4,14 +4,16 @@
     <div class="container">
       <!-- nel container avrò che per ogni oggetto  movie presente in  movies , con chiave l'id avrò una card -->
       <!-- card nel card container corrisponde al movie oggetti in movies -->
-      <card-container v-for="movie in movies" :key="movie.id" :card="movie">
+      <!-- title nel card container corrisponderà a movie.original_title -->
+      <card-container v-for="movie in movies" :key="movie.id" :card="movie" :title="movie.original_title">
       </card-container>
     </div>
     <h3>Serie Tv</h3>
     <div class="container">
       <!-- nel container avrò che per ogni oggetto  movie presente in  movies , con chiave l'id avrò una card -->
       <!-- card nel card container corrisponde al movie oggetti in movies -->
-      <card-container v-for="serie in series" :key="serie.id" :card="serie">
+      <!-- title in questo caso corrisponde a serie.name essendo api diversa -->
+      <card-container v-for="serie in series" :key="serie.id" :card="serie" :title="serie.name">
       </card-container>
     </div>
   </div>

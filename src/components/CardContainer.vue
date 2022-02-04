@@ -4,17 +4,17 @@
     <!-- ad alt do il titolo del film -->
     <img
       :src="`https://image.tmdb.org/t/p/original${card.poster_path}`"
-      :alt="card.title"
+      :alt="title"
     />
     <!-- la text area sarà visibile solo in  hover -->
     <!-- avrà i vari valori dell'oggetto movie -->
     <div class="textArea">
       <p>
-        <strong>Titolo:</strong> <span>{{ card.title }}</span>
+        <strong>Titolo:</strong> <span>{{ title }}</span>
       </p>
       <p>
         <strong>Titolo originale:</strong>
-        <span>{{ card.original_title }}</span>
+        <span>{{ title }}</span>
       </p>
       <p>
         <strong>Lingua:</strong>
@@ -31,7 +31,7 @@
         </span>
       </p>
       <p>
-        <strong>Voto: </strong><span>{{ card.popularity }}</span>
+        <strong>Voto: </strong><span>{{ card.vote_average }}</span>
       </p>
       <p>
         <strong>Overview: </strong><span>{{ card.overview }}</span>
@@ -44,6 +44,8 @@ export default {
   props: {
     //   card sarà un oggetto
     card: Object,
+    // passo anche title come stringa
+    title:String
   },
   data() {
     return {
