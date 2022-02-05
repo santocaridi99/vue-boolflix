@@ -2,6 +2,14 @@
   <header>
       <!-- header strutturato con un logo del programma  -->
     <div class="logo">Boolflix</div>
+    <ul>
+      <li>Home</li>
+      <li>Serie Tv</li>
+      <li>Film</li>
+      <li>Originali</li>
+      <li>Aggiunti di Recente</li>
+      <li>La mia lista</li>
+    </ul>
     <!-- una user input con un input text e un bottone -->
     <div class="userInput">
         <!-- quando scrivo modificherò variabile keyword o parola chiave -->
@@ -34,7 +42,33 @@ header {
   padding: 0 100px;
   .logo {
     color: red;
-    font-size: 25px;
+    font-size: 30px;
+  }
+  ul{
+    display: flex;
+    list-style: none;
+    li{
+      color:  white;
+      padding: 0px 10px;
+      cursor: pointer;
+      &:hover{
+        color:  red;
+      }
+    }
+  }
+  .userInput{
+    input{
+      width: 200px;
+      font-size: 15px;
+    }
+    button{
+      background-color: red;
+      color: white;
+      padding: 5px 20px;
+      border-radius: 5px;
+      border: 2px solid white;
+      cursor: pointer;
+    }
   }
 }
 </style>

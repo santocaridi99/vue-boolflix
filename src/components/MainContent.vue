@@ -51,10 +51,12 @@ export default {
   width:1200px;
   margin: 0 auto;
   height: 100vh;
+  padding: 10px;
+  margin-top:50px ;
   .container {
     width: 1200px;
     margin-bottom: 50px;
-    overflow-x: scroll;
+    overflow-x: auto;
     display: flex;
   }
   h1 {
