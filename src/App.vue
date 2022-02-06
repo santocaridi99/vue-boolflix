@@ -1,12 +1,18 @@
 <template>
   <div id="app">
     <!-- search nella sezione Headerbox input chiamerà metodo movieSearch -->
-    <header-box @search="searchContent"></header-box>
+    <!-- home nella sezione Headerbox chiamerà funzione nokeywordApi -->
+    <header-box @search="searchContent" @home="noKeywordApi"></header-box>
     <!-- movies nel maincontent corrisponde all'array movies in app -->
     <!-- series corrisponde all'array series in app -->
     <!-- ftitle in maincontainer corrisponde alla stringa mcontainerTitle -->
     <!-- stitle invece a scontainerTitle -->
-    <main-content :movies="movies" :series="series" :ftitle="mcontainerTitle" :stitle="scontainerTitle"></main-content>
+    <main-content
+      :movies="movies"
+      :series="series"
+      :ftitle="mcontainerTitle"
+      :stitle="scontainerTitle"
+    ></main-content>
   </div>
 </template>
 
@@ -86,6 +92,8 @@ export default {
         )
         .then((res) => {
           this.series = res.data.results;
+          // popolo dinamicamente titolo container serie tv
+          this.scontainerTitle = "Le Serie TV Netflix più apprezzate";
         });
       axios
         .get(
@@ -93,15 +101,14 @@ export default {
         )
         .then((res) => {
           this.movies = res.data.results;
+          // popolo dinamicamente titolo container film
+          this.mcontainerTitle = "I Migliori Film Netflix";
         });
     },
   },
   // verranno caricati prima
   mounted() {
     this.noKeywordApi();
-    // popolo dinamicamente i titoli dei container di serie tv e film
-    this.mcontainerTitle='I Migliori Film Netflix'
-    this.scontainerTitle='Le Serie TV Netflix più apprezzate'
   },
 };
 </script>

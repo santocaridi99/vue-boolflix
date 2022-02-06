@@ -3,7 +3,8 @@
       <!-- header strutturato con un logo del programma  -->
     <div class="logo">Boolflix</div>
     <ul>
-      <li>Home</li>
+      <!-- al click del tasto home il padre app svolgerà la funzione relativa-->
+      <li @click="$emit('home')">Home</li>
       <li>Serie Tv</li>
       <li>Film</li>
       <li>Originali</li>

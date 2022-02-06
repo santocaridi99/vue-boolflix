@@ -44,6 +44,7 @@ export default {
     // movies è un Array
     movies: Array,
     series: Array,
+    // passo le variabili dei titoli come stringhe
     stitle:String,
     ftitle:String
   },
