@@ -4,7 +4,9 @@
     <header-box @search="searchContent"></header-box>
     <!-- movies nel maincontent corrisponde all'array movies in app -->
     <!-- series corrisponde all'array series in app -->
-    <main-content :movies="movies" :series="series"></main-content>
+    <!-- ftitle in maincontainer corrisponde alla stringa mcontainerTitle -->
+    <!-- stitle invece a scontainerTitle -->
+    <main-content :movies="movies" :series="series" :ftitle="mcontainerTitle" :stitle="scontainerTitle"></main-content>
   </div>
 </template>
 
@@ -29,6 +31,10 @@ export default {
       series: [],
       // api key che ci servirà per le varie chiamate
       api_key: "4de8e24617b012aa2d57ca4c9f87b4d5",
+      // movie container title
+      mcontainerTitle: "",
+      // serie tv container title
+      scontainerTitle: "",
     };
   },
   methods: {
@@ -40,8 +46,12 @@ export default {
     // si popoleranno aspettando "await" la chiamata api
     // quindi anche questa funzione sarà asincrona
     async searchContent(inputKeyword) {
-      (this.movies = await this.movieDbApi("movie", inputKeyword)),
-        (this.series = await this.movieDbApi("tv", inputKeyword));
+      this.movies = await this.movieDbApi("movie", inputKeyword);
+      this.series = await this.movieDbApi("tv", inputKeyword);
+      // quando popolo l'array con api
+      // cambio dinamicamente il titolo dei container
+      this.mcontainerTitle = "Films";
+      this.scontainerTitle = "Serie tv";
     },
     // primo step(1) creo chiamata api
     // avrà type = il tipo (film o serie tv) che inseriremo nell url del get della chiamata
@@ -69,18 +79,29 @@ export default {
       return result;
     },
     // creo un metodo senza keyword che chiamerà l'api delle serie tv e film più popolari
-    noKeywordApi(){
-      axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${this.api_key}&language=it&page=1`).then((res)=>{
-        this.series=res.data.results;
-      })
-       axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.api_key}&language=it&page=1`).then((res)=>{
-        this.movies=res.data.results;
-      })
-    }
+    noKeywordApi() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/tv/popular?api_key=${this.api_key}&language=it&page=1`
+        )
+        .then((res) => {
+          this.series = res.data.results;
+        });
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${this.api_key}&language=it&page=1`
+        )
+        .then((res) => {
+          this.movies = res.data.results;
+        });
+    },
   },
   // verranno caricati prima
   mounted() {
-    this.noKeywordApi()
+    this.noKeywordApi();
+    // popolo dinamicamente i titoli dei container di serie tv e film
+    this.mcontainerTitle='I Migliori Film Netflix'
+    this.scontainerTitle='Le Serie TV Netflix più apprezzate'
   },
 };
 </script>

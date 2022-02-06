@@ -1,7 +1,8 @@
 <template>
   <div class="mainContainer">
     <!-- scritta compare solo se array è pieno -->
-    <h1 v-if="movies.length > 0">FILM</h1>
+    <!-- scritta è dinamica  -->
+    <h1 v-if="movies.length > 0">{{ftitle}}</h1>
     <div class="container">
       <!-- nel container avrò che per ogni oggetto  movie presente in  movies , con chiave l'id avrò una card -->
       <!-- card nel card container corrisponde al movie oggetti in movies -->
@@ -15,7 +16,8 @@
       </card-container>
     </div>
     <!-- scritta compare solo se array è pieno -->
-    <h1 v-if="series.length > 0">Serie Tv</h1>
+    <!-- scritta dinamica -->
+    <h1 v-if="series.length > 0">{{stitle}}</h1>
     <div class="container">
       <!-- nel container avrò che per ogni oggetto  movie presente in  movies , con chiave l'id avrò una card -->
       <!-- card nel card container corrisponde al movie oggetti in movies -->
@@ -42,6 +44,8 @@ export default {
     // movies è un Array
     movies: Array,
     series: Array,
+    stitle:String,
+    ftitle:String
   },
 };
 </script>
