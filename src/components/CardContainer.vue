@@ -14,7 +14,7 @@
       </p>
       <p>
         <strong>Titolo originale:</strong>
-        <span>{{ title }}</span>
+        <span>{{ originalTitle }}</span>
       </p>
       <p>
         <strong>Lingua:</strong>
@@ -53,6 +53,8 @@ export default {
     card: Object,
     // passo anche title come stringa
     title: String,
+    // passo originaltitle come stringa
+    originalTitle:String
   },
   data() {
     return {
