@@ -85,11 +85,12 @@ export default {
       width: 1200px;
       margin: 0 auto;
       margin-bottom: 50px;
-      overflow-x: auto;
+      overflow-x: scroll;
+      overflow-y: hidden;
       display: flex;
     }
     h1 {
-      padding-left: 60px;
+      margin-left: 150px;
       color: red;
       margin-bottom: 5px;
     }

@@ -34,11 +34,7 @@
         <strong>Voto: </strong>
         <!-- avrò una stellina per ogni voto che è decimale da 1 a 10 che dividendo per due diventerà ( un numero da 1 a 5) -->
         <!-- uso mathround per calcolare per eccesso o difetto -->
-        <i
-          v-for="i in Math.round(card.vote_average / 2)"
-          :key="i"
-          class="fas fa-star"
-        ></i>
+        <stars-rating :average="card.vote_average"></stars-rating>
       </p>
       <p>
         <strong>Overview: </strong><span>{{ card.overview }}</span>
@@ -47,14 +43,18 @@
   </div>
 </template>
 <script>
+import StarsRating from "./StarsRating.vue";
 export default {
+  components: {
+    StarsRating,
+  },
   props: {
     //   card sarà un oggetto
     card: Object,
     // passo anche title come stringa
     title: String,
     // passo originaltitle come stringa
-    originalTitle:String
+    originalTitle: String,
   },
   data() {
     return {
