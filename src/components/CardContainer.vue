@@ -50,7 +50,7 @@
       <p>
         <!-- faccio for per ogni genere presente in generi e stampo il nome -->
         <strong>Generi:</strong
-        ><span v-for="(genre, i) in genres" :key="i">{{ genre.name }}-</span>
+        ><span v-for="(genre, i) in genres" :key="i">#{{ genre.name }}</span>
       </p>
     </div>
   </div>
