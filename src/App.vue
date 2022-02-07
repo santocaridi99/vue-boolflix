@@ -2,7 +2,12 @@
   <div id="app">
     <!-- search nella sezione Headerbox input chiamerà metodo movieSearch -->
     <!-- home nella sezione Headerbox chiamerà funzione nokeywordApi -->
-    <header-box @search="searchContent" @home="noKeywordApi"></header-box>
+    <header-box
+      @search="searchContent"
+      @home="noKeywordApi"
+      @film="onlyfilm"
+      @serie="onlyseries"
+    ></header-box>
     <!-- movies nel maincontent corrisponde all'array movies in app -->
     <!-- series corrisponde all'array series in app -->
     <!-- ftitle in maincontainer corrisponde alla stringa mcontainerTitle -->
@@ -103,6 +108,33 @@ export default {
           this.movies = res.data.results;
           // popolo dinamicamente titolo container film
           this.mcontainerTitle = "I Film Boolflix di Tendenza";
+        });
+    },
+    // chiamate axios top rated
+    onlyfilm() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/top_rated?api_key=${this.api_key}&language=it&page=1`
+        )
+        .then((res) => {
+          this.movies = res.data.results;
+          // popolo dinamicamente titolo container film
+          this.mcontainerTitle = "I Film Boolflix più votati";
+          // svuoto container serie
+          this.series = [];
+        });
+    },
+    onlyseries() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/tv/top_rated?api_key=${this.api_key}&language=it&page=1`
+        )
+        .then((res) => {
+          this.series = res.data.results;
+          // popolo dinamicamente titolo container serie tv
+          this.scontainerTitle = "Le Serie TV Boolflix più votate";
+          // svuoto container movie
+          this.movies = [];
         });
     },
   },

@@ -5,8 +5,8 @@
     <ul>
       <!-- al click del tasto home il padre app svolgerà la funzione relativa-->
       <li @click="$emit('home')">Home</li>
-      <li>Serie Tv</li>
-      <li>Film</li>
+      <li @click="$emit('serie')">Serie Tv</li>
+      <li @click="$emit('film')">Film</li>
       <li>Originali</li>
       <li>Aggiunti di Recente</li>
       <li>La mia lista</li>
