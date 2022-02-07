@@ -39,10 +39,22 @@
       <p>
         <strong>Overview: </strong><span>{{ card.overview }}</span>
       </p>
+      <p>
+        <strong>Cast:</strong>
+        <!-- faccio un for per tutte le persone che ci sono nel cast -->
+        <!-- se indice è minore di 5 stampo il nome -->
+        <span v-for="(people , i) in cast" :key="i">
+          <span v-if="i<=5">{{people.name}}.</span>
+        </span>
+      </p>
+      <p>
+        <strong>Generi:</strong><span>{{card.genre_ids}}</span>
+      </p>
     </div>
   </div>
 </template>
 <script>
+import axios from 'axios'
 import StarsRating from "./StarsRating.vue";
 export default {
   components: {
@@ -55,13 +67,35 @@ export default {
     title: String,
     // passo originaltitle come stringa
     originalTitle: String,
+    // passo id
+    contentId:Number,
+    // passo tipo 
+    type:String
   },
   data() {
     return {
       // array di lingue presenti
       originalLanguage: ["de", "en", "es", "fr", "it"],
+      // array del cast
+      cast:[],
     };
   },
+  methods:{
+    // metodo per prendere api cast
+    async getCast(){
+      this.cast=await this.castApi()
+    },
+    async castApi(){
+      const result = await axios.get(`https://api.themoviedb.org/3/${this.type}/${this.contentId}/credits?api_key=4de8e24617b012aa2d57ca4c9f87b4d5&language=it`).then((res)=>{
+        return res.data.cast;
+      });
+      return result;
+    }
+  },
+  // lo chiamo con mounted
+  mounted(){
+    this.getCast();
+  }
 };
 </script>
 <style lang="scss" scoped>

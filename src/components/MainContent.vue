@@ -13,12 +13,15 @@
         <!-- card nel card container corrisponde al movie oggetti in movies -->
         <!-- title nel card container corrisponderà a movie.title-->
         <!-- originalTitile ugualmente corrisponde a movie.original_title -->
+        <!-- type è una stringa  -->
         <card-container
           v-for="movie in movies"
           :key="movie.id"
           :card="movie"
           :title="movie.title"
           :originalTitle="movie.original_title"
+          :contentId="movie.id"
+          :type="'movie'"
         >
         </card-container>
       </div>
@@ -38,12 +41,15 @@
         <!-- card nel card container corrisponde al movie oggetti in movies -->
         <!-- title in questo caso corrisponde a serie.name essendo api diversa -->
         <!-- ugualmente originalTittle corrisponde a serie.original_name -->
+        <!-- type è una stringa -->
         <card-container
           v-for="serie in series"
           :key="serie.id"
           :card="serie"
           :title="serie.name"
           :originalTitle="serie.original_name"
+          :contentId="serie.id"
+          :type="'tv'"
         >
         </card-container>
       </div>
@@ -85,14 +91,14 @@ export default {
     .container {
       width: 1200px;
       margin: 0 auto;
-      margin-bottom: 50px;
+      margin-bottom: 10px;
       overflow-x: auto;
       overflow-y: hidden;
       display: flex;
     }
     h1 {
       margin-left: 150px;
-      color: $main-color;
+      color: $secondary-color;
       margin-bottom: 5px;
     }
     .fas {

@@ -7,14 +7,13 @@
       <li @click="$emit('home')">Home</li>
       <li @click="$emit('serie')">Serie Tv</li>
       <li @click="$emit('film')">Film</li>
-      <li>Originali</li>
-      <li>Aggiunti di Recente</li>
-      <li>La mia lista</li>
+      <li @click="$emit('home')">Originali</li>
+      <li>Generi<i class="fas fa-sort-down"></i></li>
     </ul>
     <!-- una user input con un input text e un bottone -->
     <div class="userInput">
       <!-- quando scrivo modificherò variabile keyword o parola chiave -->
-      <input type="text" placeholder="Scrivi qui" v-model="keyword" />
+      <input type="text" placeholder="Cerca un  titolo" v-model="keyword" />
       <!-- al click verrà ascoltato dal padre App tramite search che dovrà chiamare un metodo  -->
       <button @click="$emit('search', keyword)">Invia</button>
     </div>
@@ -51,10 +50,13 @@ header {
     list-style: none;
     li {
       color: $secondary-color;
-      padding: 0px 10px;
+      padding: 0px 20px;
       cursor: pointer;
       &:hover {
         color: $main-color;
+      }
+      i{
+        margin-left: 2px;
       }
     }
   }
