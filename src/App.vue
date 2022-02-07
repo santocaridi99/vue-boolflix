@@ -93,7 +93,7 @@ export default {
         .then((res) => {
           this.series = res.data.results;
           // popolo dinamicamente titolo container serie tv
-          this.scontainerTitle = "Le Serie TV Netflix più apprezzate";
+          this.scontainerTitle = "Le Serie TV Boolflix più apprezzate";
         });
       axios
         .get(
@@ -102,7 +102,7 @@ export default {
         .then((res) => {
           this.movies = res.data.results;
           // popolo dinamicamente titolo container film
-          this.mcontainerTitle = "I Migliori Film Netflix";
+          this.mcontainerTitle = "I Film Boolflix di Tendenza";
         });
     },
   },
@@ -117,6 +117,5 @@ export default {
 // import main scss
 @import "./style/main.scss";
 // import fontawesome
-// importo font awesome
 @import url("https://use.fontawesome.com/releases/v5.7.1/css/all.css");
 </style>

@@ -73,6 +73,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import "@/style/variables.scss";
 // style
 .mainContainer {
   padding: 10px;
@@ -85,18 +86,18 @@ export default {
       width: 1200px;
       margin: 0 auto;
       margin-bottom: 50px;
-      overflow-x: scroll;
+      overflow-x: auto;
       overflow-y: hidden;
       display: flex;
     }
     h1 {
       margin-left: 150px;
-      color: red;
+      color: $main-color;
       margin-bottom: 5px;
     }
     .fas {
       font-size: 50px;
-      color: red;
+      color:$main-color;
       height: 100%;
     }
     .left {
